@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-# Comment out or remove if no dependencies
-# RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --upgrade pip
+RUN pip install django
 
-CMD ["python", "app.py"]
+# Run Django development server on port 8000, exposed to the host
+CMD ["python", "todoApp/manage.py", "runserver", "0.0.0.0:8000"]
